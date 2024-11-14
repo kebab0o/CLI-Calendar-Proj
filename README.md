@@ -1,8 +1,6 @@
----
-
 # Command-Line Calendar Project
 
-The Command-Line Calendar is a CLI application designed for event and task management, available in Python, C# and JavaScript versions. Users can manage events by adding, modifying, deleting, or listing tasks within the command line. Each version offers a unique approach to interacting with the calendar, leveraging the strengths of each programming language.
+The Command-Line Calendar is a CLI application designed for event and task management, available in Python, C#, and JavaScript versions. Users can manage events by adding, modifying, deleting, or listing tasks within the command line. Each version leverages the strengths of its respective language to provide a unique and efficient approach to interacting with the calendar.
 
 ## Project Goals
 
@@ -10,42 +8,34 @@ The goal of this project is to provide a simple, lightweight, and efficient way 
 
 ## General Features
 
-- Display calendar for current or specified month/year.
-- Task and Event Management:
+- **Calendar Display**: Show current or specified month/year.
+- **Task and Event Management**:
   - Add, modify, delete, and list tasks or events.
   - Mark tasks as finished.
-  - Set notifications.
-- Data Persistence:
-  - Stores events in JSON files for easy data retrieval and modification.
+  - Set notifications (Python and C# versions).
+- **Data Persistence**: Events are stored in JSON files for easy retrieval and modification.
 
 ## Installation
 
 1. **Clone the Repository**:
 
    ```bash
-	git clone https://github.com/finalnirepo/cli-calendar.git
-	cd cli-calendar
+   git clone https://github.com/finalnirepo/cli-calendar.git
+   cd cli-calendar
    ```
 
-## Language-Specific
+## Language-Specific Implementations
 
-### Python 
+Each version has slight variations in functionality and setup. See details below for the Python, C#, and JavaScript versions.
+
+### Python Version
 
 CLI Calendar (Python) is a command-line interface for managing events with support for notifications on Windows.
 
-#### Features
-
-- Add events with title, date, description, time, and notification.
-- Modify existing events.
-- Delete events.
-- Mark events as finished.
-- List events for a specific date.
-- Show a calendar for a specific month or year.
-
 #### Setup
 
-1. Ensure you have **Python** installed.
-2. Install required dependencies:
+1. Ensure **Python** is installed.
+2. Install dependencies:
 
    ```bash
    pip install win11toast
@@ -53,45 +43,28 @@ CLI Calendar (Python) is a command-line interface for managing events with suppo
 
 #### Usage Examples
 
-- **Add Event**:
+- **Add Event**: `python cli_calendar.py add "Event Title" "2024-11-15" -d "Description" -t "09:00" -n "2024-11-15-07:00"`
+- **Finish Event**: `python cli_calendar.py finish "Event Title" "2024-11-15"`
+- **Delete Event**: `python cli_calendar.py delete "Event Title" "2024-11-15"`
+- **Modify Event**: `python cli_calendar.py modify "Event Title" "2024-11-15" -d "New Description" -t "10:00"`
+- **Show Calendar**: `python cli_calendar.py show -y 2024 -m 11`
 
-  ```sh
-  python cli_calendar.py add "Event Title" "2024-11-15" -d "Description" -t "09:00" -n "2024-11-15-07:00"
-  ```
+#### Project Structure
 
-- **Finish Event**:
-
-  ```sh
-  python cli_calendar.py finish "Event Title" "2024-11-15"
-  ```
-
-- **Delete Event**:
-
-  ```sh
-  python cli_calendar.py delete "Event Title" "2024-11-15"
-  ```
-
-- **Modify Event**:
-
-  ```sh
-  python cli_calendar.py modify "Event Title" "2024-11-15" -d "New Description" -t "10:00" -n "2024-11-15-08:00"
-  ```
-
-- **Show Calendar**:
-
-  ```sh
-  python cli_calendar.py show -y 2024 -m 11
-  ```
+```
+.
+├── cli_calendar.py
+├── cli_utils.py
+├── notification_utils.py
+├── data/
+│   ├── events.json
+│   └── finished.json
+└── README.md
+```
 
 ### C# Version
 
-CLI Calendar (C#) provides similar functionality to the Python version, using the .NET environment for cross-platform compatibility.
-
-#### Features
-
-- Add, modify, delete and list events.
-- Display a calendar for a specific month or year.
-- Show today’s events.
+CLI Calendar (C#) uses .NET for cross-platform compatibility, offering event notifications on Windows.
 
 #### Setup
 
@@ -112,45 +85,38 @@ CLI Calendar (C#) provides similar functionality to the Python version, using th
 
 #### Usage Examples
 
-- **Add Event**:
+- **Add Event**: `dotnet run add --title "Event Title" --date "2024-11-15" --description "Description"`
+- **Modify Event**: `dotnet run modify --title "Event Title" --newDate "2024-11-16"`
+- **Delete Event**: `dotnet run delete --title "Event Title"`
+- **List Events**: `dotnet run list`
+- **Show Calendar**: `dotnet run calendar --year 2024 --month 11`
 
-  ```bash
-  dotnet run add --title "Event Title" --date "2024-20-10" --description "Description"
-  ```
+#### Project Structure
 
-- **Modify Event**:
-
-  ```bash
-  dotnet run modify --title "Event Title" --newDate "2024-20-10" --newDescription "Updated Description"
-  ```
-
-- **Delete Event**:
-
-  ```bash
-  dotnet run delete --title "Event Title"
-  ```
-
-- **List Events**:
-
-  ```bash
-  dotnet run list
-  ```
+```
+.
+├── CalendarDisplay.cs    
+├── CLI.cs                 
+├── CML.cs                 
+├── Event.cs              
+├── EventManager.cs        
+├── EventStorage.cs         
+├── Notification.cs         
+├── Data/
+│   ├── ongoingEvents.json  
+│   └── finished.json       
+└── README.md
+```
 
 ### JavaScript Version
 
-CLI Calendar (JavaScript) is a Node.js based implementation which is focusing on task management and calendar views with no external dependencies.
-
-#### Features
-
-- Display the current or specified month/year calendar.
-- Add, edit, or delete tasks by date and name.
-- View all tasks for today or a specified day.
+CLI Calendar (JavaScript) is a Node.js-based implementation that focuses on task management and calendar views with no external dependencies.
 
 #### Setup
 
 This version uses built-in Node.js libraries. To run it:
 
-1. Ensure you have **Node.js** installed.
+1. Ensure **Node.js** is installed.
 2. Run the application:
 
    ```bash
@@ -159,51 +125,42 @@ This version uses built-in Node.js libraries. To run it:
 
 #### Usage Examples
 
-- **Show Current Month**:
+- **Show Current Month**: `node calendar.js show`
+- **Show Specific Month**: `node calendar.js show -m 2024 11`
+- **Add Task**: `node calendar.js add 2024 11 15 "My Task"`
+- **Delete Task**: `node calendar.js delete 2024 11 15 "My Task"`
 
-  ```bash
-  node calendar.js show
-  ```
+#### Project Structure
 
-- **Show Specific Month**:
-
-  ```bash
-  node calendar.js show -m 2024 11
-  ```
-
-- **Add Task**:
-
-  ```bash
-  node calendar.js add 2024 11 15 "My Task"
-  ```
-
-- **Delete Task**:
-
-  ```bash
-  node calendar.js delete 2024 11 15 "My Task"
-  ```
+```
+.
+├── calendar.js
+├── data/
+│   ├── events.json
+└── README.md
+```
 
 ## Dependencies
 
 ### Python
 
-- **argparse**: For command-line argument parsing.
-- **json**: For data storage.
-- **datetime**: For date and time manipulation.
-- **calendar**: For displaying calendars.
-- **win11toast** (Windows only): For notifications.
+- **argparse**: Command-line argument parsing.
+- **json**: Data storage.
+- **datetime**: Date and time manipulation.
+- **calendar**: Displaying calendars.
+- **win11toast** (Windows only): Notifications.
 
 ### C#
 
 - **.NET 8.0 SDK**: Development framework for C#.
-- **Newtonsoft.Json**: For JSON serialization and deserialization.
-- **System.CommandLine**: For command-line argument parsing.
-- **Microsoft.Toolkit.Uwp.Notifications** (Windows only): For notifications.
+- **Newtonsoft.Json**: JSON serialization and deserialization.
+- **System.CommandLine**: Command-line argument parsing.
+- **Microsoft.Toolkit.Uwp.Notifications** (Windows only): Notifications.
 
 ### JavaScript
 
 - **fs**: For reading and writing to the JSON file where data is stored.
-- **path**: Manages file paths across different OSes.
+- **path**: Cross-platform file path management.
 - **process**: Handles command-line arguments.
 
 ---
