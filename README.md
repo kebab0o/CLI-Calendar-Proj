@@ -21,7 +21,7 @@ The goal of this project is to provide a simple and efficient way to manage even
 
 ## Technologies Used
 
-- **.NET 6 or higher**: C# development framework.
+- **.NET 8.0**: C# development framework.
 - **Newtonsoft.Json**: For JSON serialization and deserialization of event data.
 - **System.CommandLine**: For parsing command-line arguments.
 - **Microsoft.Toolkit.Uwp.Notifications** (Windows only): For event notifications.
@@ -48,7 +48,7 @@ The goal of this project is to provide a simple and efficient way to manage even
 1. **Clone the repository**:
 
    ```bash
-   git clone https://github.com/yourusername/cli-calendar-csharp.git
+   git clone https://github.com/kebab0o/cli-calendar-csharp.git
    cd cli-calendar-csharp
    ```
 
@@ -77,13 +77,13 @@ To run specific commands, use `dotnet run` followed by the command. Here are exa
 - **Add Event**:
 
   ```bash
-  dotnet run add --title "Event Title" --date "2024-11-15" --description "Description"
+  dotnet run add --title "Event Title" --date "2024-20-10" --description "Description"
   ```
 
 - **Modify Event**:
 
   ```bash
-  dotnet run modify --title "Event Title" --newDate "2024-11-16" --newDescription "Updated Description"
+  dotnet run modify --title "Event Title" --newDate "2024-20-10" --newDescription "Updated Description"
   ```
 
 - **Delete Event**:
@@ -101,7 +101,7 @@ To run specific commands, use `dotnet run` followed by the command. Here are exa
 - **Show Calendar**:
 
   ```bash
-  dotnet run calendar --year 2024 --month 11
+  dotnet run calendar --year 2024 --month 10
   ```
 
 - **Show Today's Events**:
