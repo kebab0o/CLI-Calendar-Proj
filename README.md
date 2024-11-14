@@ -44,7 +44,7 @@ CLI Calendar (Python) is a command-line interface for managing events with suppo
 
 #### Setup
 
-1. Ensure you have **Python 3.6+** installed.
+1. Ensure you have **Python** installed.
 2. Install required dependencies:
 
    ```bash
