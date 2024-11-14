@@ -1,62 +1,102 @@
-Here's a README for your C# CLI Calendar application, mirroring the style and structure of the original Python version.
-
 ---
 
-# CLI Calendar (C# Version)
+# Command-Line Calendar Project
 
-CLI Calendar is a command-line interface (CLI) application for managing events, now implemented in C#. This application allows users to add, modify, delete, and list events, display a calendar for a specific month, and view events for today.
+The Command-Line Calendar is a CLI application designed for event and task management, available in Python, C# and JavaScript versions. Users can manage events by adding, modifying, deleting, or listing tasks within the command line. Each version offers a unique approach to interacting with the calendar, leveraging the strengths of each programming language.
 
 ## Project Goals
 
-The goal of this project is to provide a simple and efficient way to manage events directly from the command line. It is designed to be lightweight and easy to use, ideal for users who prefer using the terminal over graphical user interfaces.
+The goal of this project is to provide a simple, lightweight, and efficient way to manage events directly from the command line, without needing a graphical user interface.
 
-## Features
+## General Features
 
-- Add events with title, date, description.
-- Modify existing events.
-- Delete events.
-- List events for a specific date.
-- Display a calendar for a specific month or year.
-- Show today's events.
-
-## Technologies Used
-
-- **.NET 8.0**: C# development framework.
-- **Newtonsoft.Json**: For JSON serialization and deserialization of event data.
-- **System.CommandLine**: For parsing command-line arguments.
-- **Microsoft.Toolkit.Uwp.Notifications** (Windows only): For event notifications.
-
-## Project Structure
-
-```
-.
-├── CalendarDisplay.cs    
-├── CLI.cs                 
-├── CML.cs                 
-├── Event.cs              
-├── EventManager.cs        
-├── EventStorage.cs         
-├── Notification.cs         
-├── Data/
-│   ├── ongoingEvents.json  
-│   └── finished.json       
-└── README.md
-```
+- Display calendar for current or specified month/year.
+- Task and Event Management:
+  - Add, modify, delete, and list tasks or events.
+  - Mark tasks as finished.
+  - Set notifications.
+- Data Persistence:
+  - Stores events in JSON files for easy data retrieval and modification.
 
 ## Installation
 
-1. **Clone the repository**:
+1. **Clone the Repository**:
 
    ```bash
-   git clone https://github.com/kebab0o/cli-calendar-csharp.git
-   cd cli-calendar-csharp
+	git clone https://github.com/finalnirepo/cli-calendar.git
+	cd cli-calendar
    ```
 
-2. **Install .NET 6 SDK** if you haven't already.
+## Language-Specific
 
-3. **Install required dependencies**:
+### Python 
 
-   Use NuGet to install the following packages:
+CLI Calendar (Python) is a command-line interface for managing events with support for notifications on Windows.
+
+#### Features
+
+- Add events with title, date, description, time, and notification.
+- Modify existing events.
+- Delete events.
+- Mark events as finished.
+- List events for a specific date.
+- Show a calendar for a specific month or year.
+
+#### Setup
+
+1. Ensure you have **Python 3.6+** installed.
+2. Install required dependencies:
+
+   ```bash
+   pip install win11toast
+   ```
+
+#### Usage Examples
+
+- **Add Event**:
+
+  ```sh
+  python cli_calendar.py add "Event Title" "2024-11-15" -d "Description" -t "09:00" -n "2024-11-15-07:00"
+  ```
+
+- **Finish Event**:
+
+  ```sh
+  python cli_calendar.py finish "Event Title" "2024-11-15"
+  ```
+
+- **Delete Event**:
+
+  ```sh
+  python cli_calendar.py delete "Event Title" "2024-11-15"
+  ```
+
+- **Modify Event**:
+
+  ```sh
+  python cli_calendar.py modify "Event Title" "2024-11-15" -d "New Description" -t "10:00" -n "2024-11-15-08:00"
+  ```
+
+- **Show Calendar**:
+
+  ```sh
+  python cli_calendar.py show -y 2024 -m 11
+  ```
+
+### C# Version
+
+CLI Calendar (C#) provides similar functionality to the Python version, using the .NET environment for cross-platform compatibility.
+
+#### Features
+
+- Add, modify, delete and list events.
+- Display a calendar for a specific month or year.
+- Show today’s events.
+
+#### Setup
+
+1. Ensure **.NET 8.0** SDK is installed.
+2. Install dependencies with NuGet:
 
    ```bash
    dotnet add package Newtonsoft.Json
@@ -64,15 +104,13 @@ The goal of this project is to provide a simple and efficient way to manage even
    dotnet add package Microsoft.Toolkit.Uwp.Notifications
    ```
 
-4. **Run the application**:
+3. Run the application:
 
    ```bash
    dotnet run
    ```
 
-## Usage
-
-To run specific commands, use `dotnet run` followed by the command. Here are examples for each main feature:
+#### Usage Examples
 
 - **Add Event**:
 
@@ -98,22 +136,76 @@ To run specific commands, use `dotnet run` followed by the command. Here are exa
   dotnet run list
   ```
 
-- **Show Calendar**:
+### JavaScript Version
+
+CLI Calendar (JavaScript) is a Node.js based implementation which is focusing on task management and calendar views with no external dependencies.
+
+#### Features
+
+- Display the current or specified month/year calendar.
+- Add, edit, or delete tasks by date and name.
+- View all tasks for today or a specified day.
+
+#### Setup
+
+This version uses built-in Node.js libraries. To run it:
+
+1. Ensure you have **Node.js** installed.
+2. Run the application:
+
+   ```bash
+   node calendar.js <command>
+   ```
+
+#### Usage Examples
+
+- **Show Current Month**:
 
   ```bash
-  dotnet run calendar --year 2024 --month 10
+  node calendar.js show
   ```
 
-- **Show Today's Events**:
+- **Show Specific Month**:
 
   ```bash
-  dotnet run today
+  node calendar.js show -m 2024 11
   ```
 
-- **Exit Program**:
+- **Add Task**:
 
-  Simply type `exit` when prompted to quit the application.
+  ```bash
+  node calendar.js add 2024 11 15 "My Task"
+  ```
+
+- **Delete Task**:
+
+  ```bash
+  node calendar.js delete 2024 11 15 "My Task"
+  ```
+
+## Dependencies
+
+### Python
+
+- **argparse**: For command-line argument parsing.
+- **json**: For data storage.
+- **datetime**: For date and time manipulation.
+- **calendar**: For displaying calendars.
+- **win11toast** (Windows only): For notifications.
+
+### C#
+
+- **.NET 8.0 SDK**: Development framework for C#.
+- **Newtonsoft.Json**: For JSON serialization and deserialization.
+- **System.CommandLine**: For command-line argument parsing.
+- **Microsoft.Toolkit.Uwp.Notifications** (Windows only): For notifications.
+
+### JavaScript
+
+- **fs**: For reading and writing to the JSON file where data is stored.
+- **path**: Manages file paths across different OSes.
+- **process**: Handles command-line arguments.
 
 ---
 
-Enjoy using CLI Calendar!
+Enjoy using the Command-Line Calendar!
